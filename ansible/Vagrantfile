@@ -3,6 +3,13 @@ hosts = {
   "web-1" 				=> {"octet" => '11', "user" => "vagrant"},
   "web-2" 				=> {"octet" => '12', "user" => "vagrant"},
   "web-3"				=> {"octet" => '13', "user" => "vagrant"},
+  "web-4"				=> {"octet" => '14', "user" => "root"},
+  "web-5"				=> {"octet" => '15', "user" => "root"},
+  "web-6"				=> {"octet" => '16', "user" => "root"},
+  "web-7"				=> {"octet" => '17', "user" => "root"},
+  "web-8"				=> {"octet" => '18', "user" => "root"},
+  "web-9"				=> {"octet" => '19', "user" => "root"},
+  "web-10"			    => {"octet" => '20', "user" => "root"},
   "load-balancer"		=> {"octet" => '80', "user" => "vagrant"}
 }
 
