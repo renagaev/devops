@@ -1,0 +1,38 @@
+hosts = {
+  "ansible-controller" 	=> {"octet" => '99', "user" => "root"},
+  "web-1" 				=> {"octet" => '11', "user" => "vagrant"},
+  "web-2" 				=> {"octet" => '12', "user" => "vagrant"},
+  "web-3"				=> {"octet" => '13', "user" => "vagrant"},
+  "load-balancer"		=> {"octet" => '80', "user" => "vagrant"}
+}
+
+Vagrant.configure("2") do |config|
+  hosts.each do |name, params|
+    config.vm.define name do |machine|
+	  machine.ssh.username = params['user']
+      machine.ssh.password = params['user']
+      machine.vm.hostname = "%s" % name
+	  machine.vm.network :private_network, ip: '192.168.33.'+params['octet']
+      machine.vm.network "forwarded_port", guest: '22', host: '22'+params['octet'], id: "ssh"
+      machine.vm.network "forwarded_port", guest: '80', host: '80'+params['octet'], id: "web"
+      machine.vm.provider "virtualbox" do |v|
+        v.name = name
+        if name == 'ansible-controller'
+          v.customize ["modifyvm", :id, "--memory", 512]
+        else
+          v.customize ["modifyvm", :id, "--memory", 256]
+        end
+      end
+	  if name == 'ansible-controller'
+	  	machine.vm.synced_folder "ansible-champions", "/root/ansible-champions"
+        machine.vm.provision "shell", inline: "apt install -y ansible sshpass"
+      end
+
+    end
+  end
+  config.vm.box = "debian_vagrant_box"
+  config.ssh.username = 'root'
+  config.ssh.password = 'root'
+  config.ssh.insert_key = false
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+end
