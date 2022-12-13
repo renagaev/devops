@@ -1,16 +1,16 @@
 hosts = {
   "ansible-controller" 	=> {"octet" => '99', "user" => "root"},
-  "web-1" 				=> {"octet" => '11', "user" => "vagrant"},
-  "web-2" 				=> {"octet" => '12', "user" => "vagrant"},
-  "web-3"				=> {"octet" => '13', "user" => "vagrant"},
-  "web-4"				=> {"octet" => '14', "user" => "vagrant"},
-  "web-5"				=> {"octet" => '15', "user" => "vagrant"},
-  "web-6"				=> {"octet" => '16', "user" => "vagrant"},
-  "web-7"				=> {"octet" => '17', "user" => "vagrant"},
-  "web-8"				=> {"octet" => '18', "user" => "vagrant"},
-  "web-9"				=> {"octet" => '19', "user" => "vagrant"},
-  "web-10"				=> {"octet" => '20', "user" => "vagrant"},
-  "load-balancer"		=> {"octet" => '80', "user" => "vagrant"}
+  "web-1" 				=> {"octet" => '11', "user" => "root"},
+  "web-2" 				=> {"octet" => '12', "user" => "root"},
+  "web-3"				=> {"octet" => '13', "user" => "root"},
+  "web-4"				=> {"octet" => '14', "user" => "root"},
+  "web-5"				=> {"octet" => '15', "user" => "root"},
+  "web-6"				=> {"octet" => '16', "user" => "root"},
+  "web-7"				=> {"octet" => '17', "user" => "root"},
+  "web-8"				=> {"octet" => '18', "user" => "root"},
+  "web-9"				=> {"octet" => '19', "user" => "root"},
+  "web-10"				=> {"octet" => '20', "user" => "root"},
+  "load-balancer"		=> {"octet" => '80', "user" => "root"}
 }
 
 Vagrant.configure("2") do |config|
