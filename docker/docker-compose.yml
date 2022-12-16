@@ -1,0 +1,10 @@
+﻿services:
+  server:
+    image: "httpd:2.4"
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
+  client:
+    image: curlimages/curl
+    command: >
+      /bin/sh -c 
+      "while :; do curl -s 'http://server' 2>&1; echo; sleep 1; done"
